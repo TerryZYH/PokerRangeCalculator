@@ -7,6 +7,7 @@ import { HandMatrix } from './components/HandMatrix';
 import { ProbabilityDisplay } from './components/ProbabilityDisplay';
 import { RangeSelector } from './components/RangeSelector';
 import { BatchOperations } from './components/BatchOperations';
+import { AIChat } from './components/AIChat';
 import { AlertCircle, Info, X } from 'lucide-react';
 
 function App() {
@@ -291,6 +292,9 @@ function App() {
           </div>
         </div>
       </footer>
+
+      {/* AI 聊天助手 */}
+      <AIChat currentRange={currentRange} />
     </div>
   );
 }

@@ -1,22 +1,36 @@
-# 德州扑克手牌范围计算器
+# 德州扑克手牌范围计算器 + AI 助手 🃏🤖
 
-一个功能强大的德州扑克手牌范围管理与概率计算工具，帮助玩家快速选择、管理不同场景下的手牌范围，实时计算并展示出现概率。
+一个集成了**智能 AI 对话**的德州扑克手牌范围管理与概率计算工具。基于 **React + TypeScript + FastAPI + LangGraph + Azure OpenAI** 构建，提供专业的范围分析和策略建议。
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.2-61dafb)](https://react.dev/)
+[![Python](https://img.shields.io/badge/Python-3.11-3776ab)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.109-009688)](https://fastapi.tiangolo.com/)
 
 ## ✨ 核心特性
 
+### 📊 手牌范围管理
 - 🎯 **可视化矩阵** - 13x13 直观展示所有 169 种手牌
 - ⚡ **实时概率计算** - 准确计算出现频率（基于真实组合数）
 - 📊 **12个预设范围** - 覆盖 UTG/HJ/CO/BTN/SB/BB Open 等常见场景
 - 🎨 **灵活管理** - 自定义范围无限创建，收藏常用配置
 - 💾 **数据安全** - 本地存储，支持导入导出，隐私保护
 - 📱 **响应式设计** - 完美适配桌面和移动设备
-- 🚀 **高性能** - 纯前端实现，无网络延迟，可离线使用
+
+### 🤖 AI 智能助手（v2.0 新功能）
+- ✨ **智能对话** - 基于 LangGraph 的多轮对话系统
+- 🧠 **范围分析** - AI 自动分析手牌范围的紧松度和平衡性
+- 💡 **策略推荐** - 根据位置、场景和对手风格推荐最优范围
+- 🎯 **上下文感知** - AI 自动获取当前选择的范围进行分析
+- 📚 **专业知识** - 基于 GTO 策略和数学原理回答问题
+- ☁️ **Azure OpenAI** - 企业级 AI 能力，支持标准 OpenAI
 
 ## 🚀 快速开始
+
+**⚠️ 首次使用？请阅读 [完整安装配置指南](SETUP_GUIDE.md)**
+
+---
 
 ### 安装依赖
 
@@ -24,13 +38,46 @@
 npm install
 ```
 
-### 启动应用
+### 仅启动前端（不使用 AI 功能）
 
 ```bash
 npm run dev
 ```
 
 访问 http://localhost:3000
+
+### 启动完整系统（包含 AI 功能）
+
+**1. 启动后端**：
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+pip install -r requirements.txt
+
+# 配置 backend/.env（填写 Azure OpenAI 配置）
+python app/main.py
+```
+
+**2. 启动前端**：
+
+```bash
+# 新终端窗口
+npm run dev
+```
+
+**3. 使用 Docker（一键启动）**：
+
+```bash
+# 确保已配置 backend/.env
+docker-compose up
+```
+
+访问：
+- 前端：http://localhost:3000
+- 后端：http://localhost:8000
+- API 文档：http://localhost:8000/docs
 
 ### 构建生产版本
 
@@ -61,10 +108,13 @@ npm run build
 
 ## 📚 文档
 
+- 🚀 [**完整安装配置指南**](SETUP_GUIDE.md) - 从零开始配置 AI 功能（必读）
 - 📘 [用户使用手册](./docs/USER_GUIDE.md) - 完整的使用说明
+- 🤖 [AI 集成文档](./docs/AI_INTEGRATION.md) - AI 功能配置和使用（新增）
 - 📙 [技术设计文档](./docs/TECHNICAL_DESIGN.md) - 架构和实现细节
 - 📕 [产品设计文档](./docs/PRODUCT_DESIGN.md) - 产品定位和功能规划
 - 📓 [开发指南](./docs/DEVELOPMENT.md) - 开发环境和部署说明
+- 🔧 [后端 API 文档](./backend/README.md) - 后端服务说明（新增）
 - 📔 [更新日志](./CHANGELOG.md) - 版本更新记录
 
 ## 🎯 核心功能
@@ -122,6 +172,7 @@ npm run build
 
 ## 🛠️ 技术栈
 
+### 前端
 | 技术 | 版本 | 说明 |
 |------|------|------|
 | React | 18.2.0 | UI 框架 |
@@ -129,6 +180,16 @@ npm run build
 | Vite | 5.0.8 | 快速构建 |
 | Tailwind CSS | 3.3.6 | 原子化CSS |
 | Lucide React | 0.294.0 | 图标库 |
+
+### 后端（AI 功能）
+| 技术 | 版本 | 说明 |
+|------|------|------|
+| FastAPI | 0.109.0 | 高性能 Web 框架 |
+| LangGraph | 0.0.20 | 对话流程编排 |
+| LangChain | 0.1.6 | LLM 集成 |
+| Azure OpenAI | 1.10.0 | AI 能力提供 |
+| Python | 3.11+ | 后端语言 |
+| Uvicorn | 0.27.0 | ASGI 服务器 |
 
 ## 📊 项目亮点
 
